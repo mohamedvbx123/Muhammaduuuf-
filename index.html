@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوسنات</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="day-theme">
+    <header>
+        <h1 class="animated-gradient">بوسنات</h1>
+        <button id="theme-toggle" class="theme-btn">
+            <i class="fas fa-moon"></i>
+        </button>
+    </header>
+    
+    <main>
+        <div class="categories-container">
+            <div class="category-card" onclick="navigateTo('romantic')">
+                <div class="category-icon romantic-bg">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>رومانسية</h3>
+            </div>
+            
+            <div class="category-card" onclick="navigateTo('cartoon')">
+                <div class="category-icon cartoon-bg">
+                    <i class="fas fa-film"></i>
+                </div>
+                <h3>كرتون</h3>
+            </div>
+            
+            <div class="category-card" onclick="navigateTo('religious')">
+                <div class="category-icon religious-bg">
+                    <i class="fas fa-mosque"></i>
+                </div>
+                <h3>دينية</h3>
+            </div>
+            
+            <div class="category-card" onclick="navigateTo('sad')">
+                <div class="category-icon sad-bg">
+                    <i class="fas fa-sad-tear"></i>
+                </div>
+                <h3>حزينة</h3>
+            </div>
+            
+            <div class="category-card" onclick="navigateTo('quotes')">
+                <div class="category-icon quotes-bg">
+                    <i class="fas fa-quote-right"></i>
+                </div>
+                <h3>اقتباسات</h3>
+            </div>
+            
+            <div class="category-card" onclick="navigateTo('backup')">
+                <div class="category-icon backup-bg">
+                    <i class="fas fa-archive"></i>
+                </div>
+                <h3>احتياطي 1</h3>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2025 بوسنات. جميع الحقوق محفوظة</p>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+          </html>
