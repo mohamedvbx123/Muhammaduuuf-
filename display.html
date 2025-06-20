@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض البوسنات</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="day-theme">
+    <header>
+        <button class="back-btn" onclick="goBack()">
+            <i class="fas fa-arrow-left"></i> العودة
+        </button>
+        
+        <h1 id="category-title" class="animated-gradient">بوسنات رومانسية</h1>
+        
+        <div class="filter-container">
+            <button id="filter-btn" class="filter-btn">
+                تصفية البوسنات <i class="fas fa-filter"></i>
+            </button>
+            <div id="filter-dropdown" class="filter-dropdown">
+                <div class="filter-option" data-filter="all">الكل</div>
+                <div class="filter-option" data-filter="text">نصوص فقط</div>
+                <div class="filter-option" data-filter="image">بالصور</div>
+                <div class="filter-option" data-filter="recent">الأحدث</div>
+                <div class="filter-option" data-filter="favorites">المفضلة</div>
+            </div>
+        </div>
+    </header>
+    
+    <main id="posts-container">
+        <!-- سيتم ملؤه بواسطة الجافاسكريبت -->
+    </main>
+    
+    <div id="toast" class="toast"></div>
+    
+    <script src="js/display.js"></script>
+    <script src="js/utils.js"></script>
+</body>
+                  </html>
