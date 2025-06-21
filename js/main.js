@@ -5,9 +5,11 @@ document.getElementById('theme-toggle').addEventListener('click', function() {
     if (document.body.classList.contains('night-theme')) {
         icon.classList.remove('fa-moon');
         icon.classList.add('fa-sun');
+        localStorage.setItem('theme', 'night');
     } else {
         icon.classList.remove('fa-sun');
         icon.classList.add('fa-moon');
+        localStorage.setItem('theme', 'day');
     }
 });
 
