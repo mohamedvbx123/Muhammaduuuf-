@@ -89,10 +89,8 @@ function displayPosts(posts) {
     // إضافة أحداث النقر للبوستات
     document.querySelectorAll('.post-card').forEach(card => {
         card.addEventListener('click', function(e) {
-            // إذا كان النقر على زر فلا تفعل شيء (يتم التعامل معه في الأحداث الأخرى)
             if (e.target.closest('.action-btn')) return;
             
-            // تبديل حالة البوست النشط
             document.querySelectorAll('.post-card').forEach(c => {
                 c.classList.remove('active');
             });
@@ -131,7 +129,6 @@ function setupPostButtons() {
                 .then(() => showToast('تمت المشاركة بنجاح'))
                 .catch(err => showToast('حدث خطأ أثناء المشاركة'));
             } else {
-                // Fallback for browsers that don't support Web Share API
                 const shareUrl = `whatsapp://send?text=${encodeURIComponent(postTitle + '\n\n' + postContent)}`;
                 window.open(shareUrl, '_blank');
                 showToast('تم فتح تطبيق المشاركة');
@@ -146,11 +143,9 @@ function setupPostButtons() {
             const postCard = this.closest('.post-card');
             const isFavorite = postCard.dataset.isFavorite === 'true';
             
-            // تبديل الحالة
             postCard.dataset.isFavorite = !isFavorite;
             this.classList.toggle('favorite');
             
-            // تحديث البيانات المحلية (في تطبيق حقيقي، يجب تحديث ملف JSON أو قاعدة البيانات)
             const category = localStorage.getItem('selectedCategory') || 'romantic';
             const postId = postCard.dataset.id;
             
@@ -222,4 +217,4 @@ function showToast(message) {
 
 function goBack() {
     window.history.back();
-                          }
+            }
