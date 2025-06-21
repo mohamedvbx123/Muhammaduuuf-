@@ -1,9 +1,91 @@
-/* صناديق الأقسام - إرجاعها كما كانت في الصورة الأولى */
+/* التنسيقات الأساسية */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    transition: all 0.3s ease;
+    min-height: 100vh;
+}
+
+body.night-theme {
+    background-color: #121212;
+    color: #f5f5f5;
+}
+
+/* البار العلوي */
+header {
+    padding: 1rem;
+    text-align: center;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.night-theme header {
+    background: linear-gradient(90deg, #6b47b8, #1a1a2e);
+}
+
+.display-header {
+    padding: 1rem;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    text-align: center;
+}
+
+.night-theme .display-header {
+    background: linear-gradient(90deg, #6b47b8, #1a1a2e);
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.animated-gradient {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* زر العودة */
+.back-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* صناديق الأقسام */
 .categories-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 1rem;
     padding: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .category-card {
@@ -45,10 +127,82 @@
 .quotes-bg { background-color: #48c774; }
 .backup-bg { background-color: #ff914d; }
 
-/* تعديلات صندوق البوست - حواف مضيئة متحركة فقط */
+/* تصفية البوستات */
+.filter-section {
+    margin: 1rem;
+    position: relative;
+    max-width: 800px;
+    margin: 1rem auto;
+}
+
+.filter-btn {
+    background-color: #4ecdc4;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.night-theme .filter-btn {
+    background-color: #6b47b8;
+}
+
+.filter-btn:hover {
+    opacity: 0.9;
+}
+
+.filter-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    z-index: 10;
+}
+
+.night-theme .filter-dropdown {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.filter-dropdown.show {
+    display: block;
+}
+
+.filter-option {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.filter-option:hover {
+    background-color: #f0f0f0;
+}
+
+.night-theme .filter-option:hover {
+    background-color: #2d2d2d;
+}
+
+/* صناديق البوستات */
+.posts-container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 .post-card {
     background-color: white;
-    border-radius: 12px;
+    border-radius: 10px;
     padding: 1.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
@@ -69,10 +223,8 @@
     left: -2px;
     right: -2px;
     bottom: -2px;
-    border: 2px solid transparent;
-    border-radius: 14px;
-    background: linear-gradient(45deg, 
-        #ff6b6b, #4ecdc4, #6b47b8, #ff914d);
+    border-radius: 12px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #6b47b8, #ff914d);
     background-size: 300% 300%;
     z-index: -1;
     animation: borderAnimation 4s linear infinite;
@@ -88,27 +240,580 @@
 }
 
 @keyframes borderAnimation {
-    0% { 
-        border-color: #ff6b6b;
-        background-position: 0% 50%; 
-    }
-    25% { 
-        border-color: #4ecdc4;
-    }
-    50% { 
-        border-color: #6b47b8;
-        background-position: 100% 50%; 
-    }
-    75% { 
-        border-color: #ff914d;
-    }
-    100% { 
-        border-color: #ff6b6b;
-        background-position: 0% 50%; 
-    }
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .post-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-        }
+}
+
+.post-content {
+    white-space: pre-line;
+    margin-bottom: 1rem;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    color: #444;
+}
+
+.night-theme .post-content {
+    color: #ddd;
+}
+
+.post-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1.2rem;
+    max-height: 300px;
+    object-fit: cover;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.post-date {
+    font-size: 0.85rem;
+    color: #777;
+    text-align: left;
+    margin-top: 0.5rem;
+}
+
+.night-theme .post-date {
+    color: #aaa;
+}
+
+.post-actions {
+    display: none;
+    justify-content: space-around;
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.night-theme .post-actions {
+    border-top: 1px solid #333;
+}
+
+.post-card.active .post-actions {
+    display: flex;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    color: #777;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0.5rem;
+    position: relative;
+}
+
+.night-theme .action-btn {
+    color: #aaa;
+}
+
+.action-btn:hover {
+    transform: scale(1.2);
+}
+
+.action-btn::after {
+    content: attr(title);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.action-btn:hover::after {
+    opacity: 1;
+}
+
+.action-btn.favorite {
+    color: #ff6b6b;
+}
+
+/* التوست */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+/* الثيم توجل */
+.theme-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+.theme-btn:hover {
+    transform: translateY(-50%) rotate(30deg);
+}
+
+/* الفوتر */
+footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 2rem;
+}
+
+.night-theme footer {
+    color: #aaa;
+}
+
+/* تأثيرات متحركة */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.post-card {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.post-card:nth-child(1) { animation-delay: 0.1s; }
+.post-card:nth-child(2) { animation-delay: 0.2s; }
+.post-card:nth-child(3) { animation-delay: 0.3s; }
+.post-card:nth-child(4) { animation-delay: 0.4s; }
+.post-card:nth-child(5) { animation-delay: 0.5s; }/* التنسيقات الأساسية */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    transition: all 0.3s ease;
+    min-height: 100vh;
+}
+
+body.night-theme {
+    background-color: #121212;
+    color: #f5f5f5;
+}
+
+/* البار العلوي */
+header {
+    padding: 1rem;
+    text-align: center;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.night-theme header {
+    background: linear-gradient(90deg, #6b47b8, #1a1a2e);
+}
+
+.display-header {
+    padding: 1rem;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    text-align: center;
+}
+
+.night-theme .display-header {
+    background: linear-gradient(90deg, #6b47b8, #1a1a2e);
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.animated-gradient {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* زر العودة */
+.back-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* صناديق الأقسام */
+.categories-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.category-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.night-theme .category-card {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.category-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.romantic-bg { background-color: #ff6b6b; }
+.cartoon-bg { background-color: #4ecdc4; }
+.religious-bg { background-color: #6b47b8; }
+.sad-bg { background-color: #5f6caf; }
+.quotes-bg { background-color: #48c774; }
+.backup-bg { background-color: #ff914d; }
+
+/* تصفية البوستات */
+.filter-section {
+    margin: 1rem;
+    position: relative;
+    max-width: 800px;
+    margin: 1rem auto;
+}
+
+.filter-btn {
+    background-color: #4ecdc4;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.night-theme .filter-btn {
+    background-color: #6b47b8;
+}
+
+.filter-btn:hover {
+    opacity: 0.9;
+}
+
+.filter-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    z-index: 10;
+}
+
+.night-theme .filter-dropdown {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.filter-dropdown.show {
+    display: block;
+}
+
+.filter-option {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.filter-option:hover {
+    background-color: #f0f0f0;
+}
+
+.night-theme .filter-option:hover {
+    background-color: #2d2d2d;
+}
+
+/* صناديق البوستات */
+.posts-container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.post-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+}
+
+.night-theme .post-card {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.post-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #6b47b8, #ff914d);
+    background-size: 300% 300%;
+    z-index: -1;
+    animation: borderAnimation 4s linear infinite;
+    opacity: 0.7;
+}
+
+.night-theme .post-card::before {
+    opacity: 0.5;
+}
+
+.post-card:hover::before {
+    opacity: 1;
+}
+
+@keyframes borderAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.post-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.post-content {
+    white-space: pre-line;
+    margin-bottom: 1rem;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    color: #444;
+}
+
+.night-theme .post-content {
+    color: #ddd;
+}
+
+.post-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1.2rem;
+    max-height: 300px;
+    object-fit: cover;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.post-date {
+    font-size: 0.85rem;
+    color: #777;
+    text-align: left;
+    margin-top: 0.5rem;
+}
+
+.night-theme .post-date {
+    color: #aaa;
+}
+
+.post-actions {
+    display: none;
+    justify-content: space-around;
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.night-theme .post-actions {
+    border-top: 1px solid #333;
+}
+
+.post-card.active .post-actions {
+    display: flex;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    color: #777;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0.5rem;
+    position: relative;
+}
+
+.night-theme .action-btn {
+    color: #aaa;
+}
+
+.action-btn:hover {
+    transform: scale(1.2);
+}
+
+.action-btn::after {
+    content: attr(title);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.action-btn:hover::after {
+    opacity: 1;
+}
+
+.action-btn.favorite {
+    color: #ff6b6b;
+}
+
+/* التوست */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+/* الثيم توجل */
+.theme-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+.theme-btn:hover {
+    transform: translateY(-50%) rotate(30deg);
+}
+
+/* الفوتر */
+footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 2rem;
+}
+
+.night-theme footer {
+    color: #aaa;
+}
+
+/* تأثيرات متحركة */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.post-card {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.post-card:nth-child(1) { animation-delay: 0.1s; }
+.post-card:nth-child(2) { animation-delay: 0.2s; }
+.post-card:nth-child(3) { animation-delay: 0.3s; }
+.post-card:nth-child(4) { animation-delay: 0.4s; }
+.post-card:nth-child(5) { animation-delay: 0.5s; }
