@@ -1,18 +1,12 @@
 [
     {
-        "id": 1,
-        "title": "يدي يبدل حَقِّي المشيب",
         "content": "I WANT THIS STORY WITH YOU\n\n\"يدي يبدل حَقِّي المشيب\":\n\nالحب الحقيقي لا يعرف السن\nولا يهتم بالشيب الذي يأتي مع الزمن",
         "date": "09/05/2025",
-        "image": "images/romantic1.jpg",
-        "isFavorite": false
+        "image": ""
     },
     {
-        "id": 2,
-        "title": "حب لا ينتهي",
         "content": "الحب الذي يشبه القمر\nيضيء حتى في أحلك الليالي\nويبقى رغم كل العواصف",
         "date": "12/05/2025",
-        "image": "images/IMG-20250620-WA0006.jpg",
-        "isFavorite": false
+        "image": "images/IMG-20250620-WA0006.jpg"
     }
 ]
